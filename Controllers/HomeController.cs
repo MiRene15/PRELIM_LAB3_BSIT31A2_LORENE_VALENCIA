@@ -6,27 +6,15 @@ namespace PRELIM_LAB3_BSIT31A2_LORENE_VALENCIA.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Index()
         {
-            return View();
-        }
+            List<IDescribable> customers = new List<IDescribable>
+            {
+                new Customer { Id = 1, Name = "John Doe", Email = "john@example.com" },
+                new PremiumCustomer { Id = 2, Name = "Jane Smith", Email = "jane@example.com", MembershipLevel = "Gold" }
+            };
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(customers);
         }
     }
 }
