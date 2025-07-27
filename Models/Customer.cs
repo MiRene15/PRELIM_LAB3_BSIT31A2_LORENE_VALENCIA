@@ -1,15 +1,15 @@
-﻿using System.Reflection.Metadata;
-
+﻿
 namespace PRELIM_LAB3_BSIT31A2_LORENE_VALENCIA.Models
 {
-    public class Customer : BaseEntity, IDescribable
+    public class Customer : BaseEntity
     {
-        public string Name { get; set; }
-        public string Email { get; set; }
+        public int customerId { get; set; }
 
-        public virtual string Describe()
+        public override string Description()
         {
-            return $"Customer: {Name}, Email: {Email}";
+            return $"Regular Customer: {customerId}, " +
+                   $"Name: {getFullName()}, " +
+                   $"Age: {getAge()}";
         }
     }
 }

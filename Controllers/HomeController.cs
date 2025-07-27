@@ -8,13 +8,29 @@ namespace PRELIM_LAB3_BSIT31A2_LORENE_VALENCIA.Controllers
     {
         public IActionResult Index()
         {
-            List<IDescribable> customers = new List<IDescribable>
+            var customerList = new List<Customer>
             {
-                new Customer { Id = 1, Name = "John Doe", Email = "john@example.com" },
-                new PremiumCustomer { Id = 2, Name = "Jane Smith", Email = "jane@example.com", MembershipLevel = "Gold" }
+                new Customer
+                {
+                    customerId = 100,
+                    lastName = "Alagao",
+                    firstName = "Mikyle",
+                    middleName = "V.",
+                    birthDay = new DateTime(1990, 5, 15)
+                },
+                new PremiumCustomer
+                {
+                    customerId = 200,
+                    lastName = "Valencia",
+                    firstName = "Lorene Mikyle",
+                    middleName = "A.",
+                    birthDay = new DateTime(1985, 3, 20),
+                    isVIP = true
+                }
             };
 
-            return View(customers);
+            ViewBag.customerList = customerList;
+            return View();
         }
     }
 }

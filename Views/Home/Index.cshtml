@@ -1,17 +1,26 @@
-﻿@model List<IDescribable>
+﻿@{
+    ViewData["Title"] = "Customer List";
+    var customerList = ViewBag.customerList as List<PRELIM_LAB3_BSIT31A2_LORENE_VALENCIA.Models.Customer>;
+}
 
-<body>
-    <h2>Customer List</h2>
+<body style="background-color: #ffccf9;">
+<h2><strong><center>📃 Customer List</center></strong></h2>
+
 <hr/>
 
 <ul>
-    @foreach (var customer in Model)
+    @foreach (var customer in customerList)
     {
-    <Li>@customer.Describe()</Li>
+        if (customer is PRELIM_LAB3_BSIT31A2_LORENE_VALENCIA.Models.PremiumCustomer VIP)
+        {
+            <li>@VIP.Description()</li>
+        }
+        else
+        {
+            <li>@customer.Description()</li>
+        }
     }
 
 </ul>
-
 </body>
 
-</IDescribable>
